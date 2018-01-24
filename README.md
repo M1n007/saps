@@ -1,1 +1,1 @@
-SAPS( Simple Aplikasi Pengarsipan Surat
+SAPS( Simple Aplikasi Pengarsipan Surat )

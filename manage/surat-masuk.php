@@ -16,50 +16,14 @@ if (empty($_SESSION['username'])) {
         <!-- Main content -->
           <section class="content">
             <div class="row">
-                <div class="col-lg-3 table-responsive">
-                  <form action="editpeg.php" method="get">
-                  <table class="table table-striped table-hover">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Jabatan</th>
-                        <th>alamat</th>
-                        <th>Telp</th>
-                        <th>Kelamin</th>
-                        <th>Aksi</th>
-                        <th><a href="editpeg.php?tambah=tambah-data"><font class="glyphicon glyphicon-plus"></font></a></th>
-                      </tr>
-                    </thead>
-                    <?php
-                      $query = mysqli_query($konek, "select * from pegawai");{
-                      while ($t = mysqli_fetch_array($query)) {
-                     ?>
-                    <tbody>
-                      <tr>
-                        <td><?php echo $t['1']; ?></td>
-                        <td><?php echo $t['2']; ?></td>
-                        <td><?php echo $t['3']; ?></td>
-                        <td><?php echo $t['4']; ?></td>
-                        <td><?php echo $t['5']; ?></td>
-                        <td><?php echo $t['6']; ?></td>
-                        <td>
-                          <a href="editpeg.php?details=<?php echo $t['1']; ?>"><font class="fa fa-reply"></font></a>
-                          <a href="?delete=<?php echo $t['1']; ?>"><font class="glyphicon glyphicon-trash"></font></a>
-                        </td>
-                      </tr>
-                    </tbody>
-                    <?php
-                        }
-                      }
-                     ?>
-                  </table>
-                </form>
+                <div class="col-lg-3">
+                  surat masuk
                 </div>
             </div>
           </section><!-- /.content -->
     </aside>
 </div><!-- ./wrapper -->
+
 
 <!-- tampilan popup kirim surat -->
 <div id="myMod" class="modal fade" role="dialog">

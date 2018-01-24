@@ -64,7 +64,7 @@ if (empty($_SESSION['username'])) {
                           <div class="icon">
                               <i class="fa fa-share"></i>
                           </div>
-                          <a href="#" class="small-box-footer">
+                          <a href="surat-masuk.php" class="small-box-footer">
                               More info <i class="fa fa-arrow-circle-right"></i>
                           </a>
                       </div>
@@ -83,7 +83,7 @@ if (empty($_SESSION['username'])) {
                           <div class="icon">
                               <i class="fa fa-reply"></i>
                           </div>
-                          <a href="#" class="small-box-footer">
+                          <a href="surat-keluar.php" class="small-box-footer">
                               More info <i class="fa fa-arrow-circle-right"></i>
                           </a>
                       </div>
@@ -125,7 +125,7 @@ if (empty($_SESSION['username'])) {
                               <div class="icon">
                                   <i class="fa fa-share"></i>
                               </div>
-                              <a href="#" class="small-box-footer">
+                              <a href="surat-masuk.php" class="small-box-footer">
                                   More info <i class="fa fa-arrow-circle-right"></i>
                               </a>
                           </div>
@@ -144,7 +144,7 @@ if (empty($_SESSION['username'])) {
                               <div class="icon">
                                   <i class="fa fa-reply"></i>
                               </div>
-                              <a href="#" class="small-box-footer">
+                              <a href="surat-keluar.php" class="small-box-footer">
                                   More info <i class="fa fa-arrow-circle-right"></i>
                               </a>
                           </div>
