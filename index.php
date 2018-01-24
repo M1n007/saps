@@ -23,7 +23,7 @@ session_start();
                 $password = $_POST['passlog'];
                 $level = $_POST['levellog'];
 
-                $query = mysqli_query($konek, "select * from user where username='$username' and password='$password' and level='$level'");
+                $query = mysqli_query($konek, "select * from pegawai where username='$username' and password='$password' and level='$level'");
                 $coba = mysqli_num_rows($query);
                 if ($coba==TRUE) {
                   $_SESSION['username'] = $username;
