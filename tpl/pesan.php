@@ -16,9 +16,11 @@
             $kirim1 = $konek->query($kirim);
 
             if ($kirim1) {
-              echo "berhasil send data";
+              ?><font name="pesan1">Berhasil Tambah data</font>
+              <?php
             }else{
-              echo "gagal kirim data";
+              ?><font name="pesan2">Gagal Tambah data</font>
+              <?php
             }
 
           }

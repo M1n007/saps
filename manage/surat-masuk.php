@@ -17,7 +17,33 @@ if (empty($_SESSION['username'])) {
           <section class="content">
             <div class="row">
                 <div class="col-lg-3">
-                  surat masuk
+                  <form action="" method="get">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Isi Pesan</th>
+                          <th>Diterima Oleh</th>
+                        </tr>
+                      </thead>
+                      <?php
+                        $user = $_SESSION['username'];
+                        $tampilkan = mysqli_query($konek, "select * from pesan where untuk='$user'");{
+                          while ($r = mysqli_fetch_array($tampilkan)) {
+                       ?>
+                      <tbody>
+                        <tr>
+                          <td><?php echo $r['0']; ?></td>
+                          <td><?php echo $r['3']; ?></td>
+                          <td><?php echo $r['2']; ?></td>
+                        </tr>
+                      </tbody>
+                      <?php
+                          }
+                        }
+                       ?>
+                    </table>
+                  </form>
                 </div>
             </div>
           </section><!-- /.content -->

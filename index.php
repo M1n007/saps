@@ -1,7 +1,7 @@
 <?php
 include 'assets/configuration/konek.php';
 session_start();
- ?>
+?>
 <html>
   <head>
     <title>Simple Aplikasi Pengarsipan Surat</title>
@@ -31,7 +31,7 @@ session_start();
                   header("Location: manage/index.php");
                 }else{
                   ?><center><font class="alert alert-danger modal-title">Login gagal, periksa kembali informasi login anda.</font></center>
-                  <?
+                  <?php
                 }
               }
              ?>

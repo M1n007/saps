@@ -78,7 +78,7 @@ if (empty($_SESSION['username'])) {
                           <div class="inner">
                               <h3>
                                 <?php
-                                  $pegawai = mysqli_query($konek, "select * from pesan");{
+                                  $pegawai = mysqli_query($konek, "select * from pesan dari='$user'");{
                                  ?>
                                  <font>
                                    <?php

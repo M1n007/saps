@@ -27,7 +27,8 @@ if (empty($_SESSION['username'])) {
                         </tr>
                       </thead>
                       <?php
-                        $tampilkan = mysqli_query($konek, "select * from pesan");{
+                        $user = $_SESSION['username'];
+                        $tampilkan = mysqli_query($konek, "select * from pesan where dari='$user'");{
                           while ($r = mysqli_fetch_array($tampilkan)) {
                        ?>
                       <tbody>
