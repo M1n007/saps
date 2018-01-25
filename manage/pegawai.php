@@ -28,11 +28,11 @@ if (empty($_SESSION['username'])) {
                         <th>Telp</th>
                         <th>Kelamin</th>
                         <th>Aksi</th>
-                        <th><a href="editpeg.php?tambah=tambah-data"><font class="glyphicon glyphicon-plus"></font></a></th>
+                        <th><a href="editpeg.php?tambah"><font class="glyphicon glyphicon-plus"></font></a></th>
                       </tr>
                     </thead>
                     <?php
-                      $query = mysqli_query($konek, "select * from pegawai");{
+                      $query = mysqli_query($konek, "select * from pegawai limit 3");{
                       while ($t = mysqli_fetch_array($query)) {
                      ?>
                     <tbody>
@@ -53,6 +53,9 @@ if (empty($_SESSION['username'])) {
                         }
                       }
                      ?>
+                    <tr>
+                      <th><a href="index.php"><font class="fa fa-hand-o-left">Kembali</font></a></th>
+                    <tr>
                   </table>
                 </form>
                 </div>

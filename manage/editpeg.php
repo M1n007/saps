@@ -15,18 +15,46 @@ if (empty($_SESSION['username'])) {
     <aside class="right-side container-fluid">
         <!-- Main content -->
           <section class="content">
+            <?php
+              if (isset($_POST['create'])) {
+                $nopeg = $_POST['nopeg'];
+                $namapeg = $_POST['namapeg'];
+                $jabpeg = $_POST['jabpeg'];
+                $alamatpeg = $_POST['alamatpeg'];
+                $telppeg = $_POST['telppeg'];
+                $kelaminpeg = $_POST['kelaminpeg'];
+                $levelpeg = $_POST['levelpeg'];
+                $userpeg = $_POST['userpeg'];
+                $passpeg = $_POST['passpeg'];
+
+                $perintah = mysqli_query(
+                  $konek, "
+                  insert into pegawai(no_peg, nama_peg, jabatan, alamat, no_telp, jns_kelamin, level, username, password)
+                  values('$nopeg', '$namapeg', '$jabpeg', '$alamatpeg', '$telppeg', '$kelaminpeg', '$levelpeg', '$userpeg', '$passpeg')
+                  "
+                );
+                if ($perintah == TRUE) {
+                  ?><font class="alert alert-success">Berhasil Menambahkan Data!!</font>
+                }else{
+                  <?php
+                  ?>
+                  <font class="alert alert-danger">Gagal Menambahkan Data!!</font>
+                  <?php
+                }
+              }
+             ?>
             <center><font><b>Details Data Pegawai</b></font></center>
             <?php
               if (isset($_GET['tambah'])) {
              ?>
-              <form method="" action="post">
+              <form action="" method="post">
                   <div class="form-group">
                     <?php
                     $query = $konek->query("SELECT max(no_peg) as maxKode FROM pegawai");
                     $data  = mysqli_fetch_array($query);
                     $noPeg = $data['maxKode'];
 
-                    $noUrut = (int) substr($noPeg, 4, 4);
+                    $noUrut = (int) substr($noPeg, 3, 3);
                     $noUrut++;
 
                     $char = "PEG";
@@ -43,7 +71,7 @@ if (empty($_SESSION['username'])) {
                     <label>Telp :</label>
                     <input class="form-control" type="number" name="telppeg" placeholder="masukan no telp pegawai"/>
                     <label>Kelamin :</label>
-                    <select class="form-control">
+                    <select class="form-control" name="kelaminpeg">
                       <option class="form-control" name="kelaminpeg">
                         laki-laki
                       </option>
@@ -52,7 +80,7 @@ if (empty($_SESSION['username'])) {
                       </option>
                     <select>
                     <label>Level :</label>
-                    <select class="form-control">
+                    <select class="form-control" name="levelpeg">
                       <option class="form-control" name="levelpeg">
                         admin
                       </option>
@@ -61,18 +89,18 @@ if (empty($_SESSION['username'])) {
                       </option>
                     <select>
                     <label>Username :</label>
-                    <input class="form-control" type="text" name="userpeg" value="masukan username untuk pegawai"/>
+                    <input class="form-control" type="text" name="userpeg" placeholder="masukan username untuk pegawai"/>
                     <label>Password :</label>
-                    <input class="form-control" type="text" name="passpeg" value="masukan password untuk pegawai"/>
+                    <input class="form-control" type="text" name="passpeg" placeholder="masukan password untuk pegawai"/>
                   </div>
                   <div class="modal-footer">
                     <a href="pegawai.php" class="btn btn-primary">Kembali</a>
-                    <button class="btn btn-primary" name="tambah">Tambah</button>
+                    <input type="submit" value="tambah" class="btn btn-primary" name="create"/>
                   </form>
                 <?php
               }else{
                 ?>
-                <form method="" action="get">
+                <form action="" method="get">
                 <?php
                   if (isset($_GET['details'])) {
                     $no_peg= $_GET['details'];
@@ -120,33 +148,5 @@ if (empty($_SESSION['username'])) {
     </aside>
 </div><!-- ./wrapper -->
 
-
-<!-- tampilan popup kirim surat -->
-<div id="myMod" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <center><font><b>Kirim Surat</b></font></center>
-      </div>
-      <div class="modal-body">
-        <form method="" action="">
-          <div class="form-group">
-            <label>No Surat :</label>
-            <input class="form-control" type="number" placeholder="masukan nomer surat"/>
-            <label>Subject :</label>
-            <input class="form-control" type="text" placeholder="masukan subject"/>
-            <label>Isi Surat :</label>
-            <input class="form-control" type="text" placeholder="masukan isi surat"/>
-            <label>File Surat :</label>
-            <input type="file"/>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-dismiss="modal">Batal</button>
-        <button class="btn btn-primary">Send</button>
-      </form>
-      </div>
-    </div>
-  </div>
-</div>
+<?php require_once('../tpl/pesan.php'); ?>
 <?php require_once('../tpl/footer.php'); ?>

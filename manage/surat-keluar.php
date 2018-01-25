@@ -17,7 +17,32 @@ if (empty($_SESSION['username'])) {
           <section class="content">
             <div class="row">
                 <div class="col-lg-3">
-                  surat keluar
+                  <form action="" method="get">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Isi Pesan</th>
+                          <th>Diterima Oleh</th>
+                        </tr>
+                      </thead>
+                      <?php
+                        $tampilkan = mysqli_query($konek, "select * from pesan");{
+                          while ($r = mysqli_fetch_array($tampilkan)) {
+                       ?>
+                      <tbody>
+                        <tr>
+                          <td><?php echo $r['0']; ?></td>
+                          <td><?php echo $r['3']; ?></td>
+                          <td><?php echo $r['2']; ?></td>
+                        </tr>
+                      </tbody>
+                      <?php
+                          }
+                        }
+                       ?>
+                    </table>
+                  </form>
                 </div>
             </div>
           </section><!-- /.content -->
@@ -25,32 +50,5 @@ if (empty($_SESSION['username'])) {
 </div><!-- ./wrapper -->
 
 
-<!-- tampilan popup kirim surat -->
-<div id="myMod" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <center><font><b>Kirim Surat</b></font></center>
-      </div>
-      <div class="modal-body">
-        <form method="" action="">
-          <div class="form-group">
-            <label>No Surat :</label>
-            <input class="form-control" type="number" placeholder="masukan nomer surat"/>
-            <label>Subject :</label>
-            <input class="form-control" type="text" placeholder="masukan subject"/>
-            <label>Isi Surat :</label>
-            <input class="form-control" type="text" placeholder="masukan isi surat"/>
-            <label>File Surat :</label>
-            <input type="file"/>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-dismiss="modal">Batal</button>
-        <button class="btn btn-primary">Send</button>
-      </form>
-      </div>
-    </div>
-  </div>
-</div>
+<?php require_once('../tpl/pesan.php'); ?>
 <?php require_once('../tpl/footer.php'); ?>
