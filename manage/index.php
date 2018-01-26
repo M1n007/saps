@@ -50,6 +50,33 @@ if (empty($_SESSION['username'])) {
                           </a>
                       </div>
                   </div><!-- ./col -->
+                  <div class="col-lg-3 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-red">
+                          <div class="inner">
+                              <h3>
+                                <?php
+                                $dispo = mysqli_query($konek, "select * from pesan");{
+                                 ?>
+                                 <font>
+                                   <?php
+                                      echo mysqli_num_rows($dispo);
+                                      }
+                                    ?>
+                                  </font>
+                              </h3>
+                              <p>
+                                  Disposisi
+                              </p>
+                          </div>
+                          <div class="icon">
+                              <i class="fa fa-check"></i>
+                          </div>
+                          <a href="disposisi.php" class="small-box-footer">
+                              More info <i class="fa fa-arrow-circle-right"></i>
+                          </a>
+                      </div>
+                  </div><!-- ./col -->
                   <?php
                     }
                    ?>
@@ -58,7 +85,16 @@ if (empty($_SESSION['username'])) {
                       <div class="small-box bg-green">
                           <div class="inner">
                               <h3>
-                                  10
+                                <?php
+                                $user = $_SESSION['username'];
+                                $tampilkan = mysqli_query($konek, "select * from pesan where untuk='$user'");{
+                                 ?>
+                                 <font>
+                                   <?php
+                                      echo mysqli_num_rows($tampilkan);
+                                      }
+                                    ?>
+                                  </font>
                               </h3>
                               <p>
                                   Surat Masuk
@@ -78,11 +114,12 @@ if (empty($_SESSION['username'])) {
                           <div class="inner">
                               <h3>
                                 <?php
-                                  $pegawai = mysqli_query($konek, "select * from pesan dari='$user'");{
+                                $user = $_SESSION['username'];
+                                $keluar = mysqli_query($konek, "select * from pesan where dari='$user'");{
                                  ?>
                                  <font>
                                    <?php
-                                      echo mysqli_num_rows($pegawai);
+                                      echo mysqli_num_rows($keluar);
                                       }
                                     ?>
                                   </font>
@@ -95,25 +132,6 @@ if (empty($_SESSION['username'])) {
                               <i class="fa fa-reply"></i>
                           </div>
                           <a href="surat-keluar.php" class="small-box-footer">
-                              More info <i class="fa fa-arrow-circle-right"></i>
-                          </a>
-                      </div>
-                  </div><!-- ./col -->
-                  <div class="col-lg-3 col-xs-6">
-                      <!-- small box -->
-                      <div class="small-box bg-red">
-                          <div class="inner">
-                              <h3>
-                                  10
-                              </h3>
-                              <p>
-                                  Dispotition
-                              </p>
-                          </div>
-                          <div class="icon">
-                              <i class="fa fa-check"></i>
-                          </div>
-                          <a href="#" class="small-box-footer">
                               More info <i class="fa fa-arrow-circle-right"></i>
                           </a>
                       </div>

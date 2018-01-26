@@ -12,6 +12,21 @@
                 <i class="fa fa-envelope"></i> <span>Kirim Surat</span>
             </a>
         </li>
+        <li>
+            <a href="surat-masuk.php">
+                <i class="fa fa-share"></i> <span>Surat Masuk</span>
+            </a>
+        </li>
+        <li>
+            <a href="surat-keluar.php">
+                <i class="fa fa-reply"></i> <span>Surat Keluar</span>
+            </a>
+        </li>
+        <li>
+            <a href="disposisi.php">
+                <i class="fa fa-check"></i> <span>Disposisi</span>
+            </a>
+        </li>
     </ul>
 </section>
 <!-- /.sidebar -->

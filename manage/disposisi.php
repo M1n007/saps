@@ -16,32 +16,29 @@ if (empty($_SESSION['username'])) {
         <!-- Main content -->
           <section class="content">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-3 table-responsive">
                   <form action="" method="get">
                     <table class="table table-striped">
                       <thead>
                         <tr>
                           <th>Id</th>
+                          <th>Pengirim</th>
                           <th>Penerima</th>
-                          <th>Subject</th>
-                          <th>Isi</th>
-                          <th>Status</th>
+                          <th>Judul</th>
+                          <th>Isi Pesan</th>
                         </tr>
                       </thead>
                       <?php
-                        $user = $_SESSION['username'];
-                        $tampilkan = mysqli_query($konek, "select * from pesan where dari='$user'");{
+                        $tampilkan = mysqli_query($konek, "select * from pesan");{
                           while ($r = mysqli_fetch_array($tampilkan)) {
                        ?>
                       <tbody>
                         <tr>
                           <td><?php echo $r['0']; ?></td>
+                          <td><?php echo $r['1']; ?></td>
                           <td><?php echo $r['2']; ?></td>
                           <td><?php echo $r['3']; ?></td>
                           <td><?php echo $r['4']; ?></td>
-                          <td>
-                            <span class="fa fa-check" style="color:green;"></span>
-                          </td>
                         </tr>
                       </tbody>
                       <?php
@@ -55,7 +52,6 @@ if (empty($_SESSION['username'])) {
           </section><!-- /.content -->
     </aside>
 </div><!-- ./wrapper -->
-
 
 <?php require_once('../tpl/pesan.php'); ?>
 <?php require_once('../tpl/footer.php'); ?>

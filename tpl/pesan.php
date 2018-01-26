@@ -1,3 +1,23 @@
+<?php
+  if (isset($_POST['kirim'])) {
+    $dari = $_POST['dari'];
+    $untuk = $_POST['untuk'];
+    $judul = $_POST['judul'];
+    $isi = $_POST['isi'];
+
+    $kirim = "insert into pesan(dari, untuk, judul, isi) values('$dari', '$untuk', '$judul', '$isi')";
+    $kirim1 = $konek->query($kirim);
+
+    if ($kirim1) {
+      ?><script>alert('Sukses mengirim pesan')</script>
+      <?php
+    }else{
+      ?><script>alert('Gagal mengirim pesan')</script>
+      <?php
+    }
+
+  }
+ ?>
 <!-- tampilan popup kirim surat -->
 <div id="myMod" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -6,31 +26,14 @@
         <center><font><b>Kirim Surat</b></font></center>
       </div>
       <div class="modal-body">
-        <?php
-          if (isset($_POST['kirim'])) {
-            $dari = $_POST['dari'];
-            $untuk = $_POST['untuk'];
-            $isi = $_POST['isi'];
-
-            $kirim = "insert into pesan(dari, untuk, isi) values('$dari', '$untuk', '$isi')";
-            $kirim1 = $konek->query($kirim);
-
-            if ($kirim1) {
-              ?><font name="pesan1">Berhasil Tambah data</font>
-              <?php
-            }else{
-              ?><font name="pesan2">Gagal Tambah data</font>
-              <?php
-            }
-
-          }
-         ?>
         <form method="POST" action="">
           <div class="form-group">
             <label>From :</label>
             <input class="form-control" type="text" name="dari" value="<?php echo $_SESSION['username']; ?>" readonly/>
             <label>To :</label>
-            <input class="form-control" type="text" name="untuk" placeholder="masukan subject"/>
+            <input class="form-control" type="text" name="untuk" placeholder="masukan nama penerima"/>
+            <label>Subject :</label>
+            <input class="form-control" type="text" name="judul" placeholder="masukan subject"/>
             <label>Isi :</label>
             <input class="form-control" type="text" name="isi" placeholder="masukan isi surat"/>
           </div>

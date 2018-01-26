@@ -31,24 +31,60 @@ include '../assets/configuration/konek.php';
                   <li class="dropdown messages-menu">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                           <i class="fa fa-envelope"></i>
-                          <span class="label label-success">4</span>
+                          <span class="label label-success">
+                            <?php
+                            $user = $_SESSION['username'];
+                            $notif = mysqli_query($konek, "select * from pesan where untuk='$user'");{
+                              echo mysqli_num_rows($notif);
+                             ?>
+                          </span>
                       </a>
                       <ul class="dropdown-menu">
-                          <li class="header">You have 4 messages</li>
+                          <li class="header">You have <?php echo mysqli_num_rows($notif) ?> messages</li>
+                          <?php
+                            }
+                           ?>
                           <li>
                               <!-- inner menu: contains the actual data -->
                               <ul class="menu">
-                                  <li><!-- start message -->
-                                      <a href="#">
-                                          <h4>
-                                              Support Team
-                                          </h4>
-                                          <p>Why not buy a new awesome theme?</p>
-                                      </a>
-                                  </li><!-- end message -->
+                                <?php
+                                $user = $_SESSION['username'];
+                                $ps = mysqli_query($konek, "select * from pesan where untuk='$user' limit 3");{
+                                  while ($ps1 = mysqli_fetch_array($ps)) {
+                                 ?>
+                                  <?php
+                                    if ($ps1['2'] < 0) {
+                                      ?>
+                                      <li><!-- start message -->
+                                          <a href="#">
+                                            <p>
+                                              Belum Memiliki Pesan.
+                                            </p>
+                                          </a>
+                                      </li><!-- end message -->
+                                      <?php
+                                    }else{
+                                      ?>
+                                      <li><!-- start message -->
+                                          <a href="#">
+                                              <h4>
+                                                <?php  echo $ps1['1']; ?>
+                                              </h4>
+                                              <p>
+                                                <?php  echo $ps1['3']; ?>
+                                              </p>
+                                          </a>
+                                      </li><!-- end message -->
+                                      <?php
+                                    }
+                                   ?>
+                                  <?php
+                                      }
+                                    }
+                                   ?>
                               </ul>
                           </li>
-                          <li class="footer"><a href="#">See All Messages</a></li>
+                          <li class="footer"><a href="surat-masuk.php">See All Messages</a></li>
                       </ul>
                   </li>
                   <!-- User Account: style can be found in dropdown.less -->
