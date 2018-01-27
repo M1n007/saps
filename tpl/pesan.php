@@ -28,6 +28,10 @@
       <div class="modal-body">
         <form method="POST" action="">
           <div class="form-group">
+            <label>No Surat :</label>
+            <input class="form-control" type="text" name="nosur" value="" readonly/>
+            <label>Tanggal Surat:</label>
+            <input class="form-control" type="text" name="tglsurat" value="" readonly/>
             <label>From :</label>
             <input class="form-control" type="text" name="dari" value="<?php echo $_SESSION['username']; ?>" readonly/>
             <label>To :</label>

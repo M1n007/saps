@@ -30,7 +30,9 @@ include '../assets/configuration/konek.php';
                   <!-- Messages: style can be found in dropdown.less-->
                   <li class="dropdown messages-menu">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <i class="fa fa-envelope"></i>
+                          <form action="" method="get">
+                          <i class="fa fa-envelope" name="lihat"></i>
+                          </form>
                           <span class="label label-success">
                             <?php
                             $user = $_SESSION['username'];
@@ -49,11 +51,11 @@ include '../assets/configuration/konek.php';
                               <ul class="menu">
                                 <?php
                                 $user = $_SESSION['username'];
-                                $ps = mysqli_query($konek, "select * from pesan where untuk='$user' limit 3");{
+                                $ps = mysqli_query($konek, "select * from pesan where untuk='$user' order by desc");{
                                   while ($ps1 = mysqli_fetch_array($ps)) {
                                  ?>
                                   <?php
-                                    if ($ps1['2'] < 0) {
+                                    if (mysqli_num_rows($ps1) < 0) {
                                       ?>
                                       <li><!-- start message -->
                                           <a href="#">

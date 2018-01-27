@@ -36,17 +36,7 @@ if (empty($_SESSION['username'])) {
                       <tbody>
                         <tr>
                           <td>
-                            <?php
-                              if (isset($_GET['lihat'])) {
-                                $query3 = mysqli_query($konek, "update pesan set status=1 where id=".$_GET['id']);;
-                                if ($query3) {
-                                  ?>
-                                  <a href="?lihat=<?php echo $r['0']; ?>"><span class="fa fa-eye"></span></a>
-                                  <?php
-                                }
-                              }
-                             ?>
-                            <a href="?lihat=<?php echo $r['0']; ?>" name><span class="fa fa-envelope"></span></a>
+                            <a href="view.php?lihatnr=<?php echo $r['0']; ?>" name><span class="fa fa-envelope"></span></a>
                           </td>
                           <td><?php echo $r['0']; ?></td>
                           <td><?php echo $r['1']; ?></td>
