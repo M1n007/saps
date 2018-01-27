@@ -21,11 +21,12 @@ if (empty($_SESSION['username'])) {
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>Status</th>
-                          <th>Id</th>
+                          <th>Kode</th>
+                          <th>No Surat</th>
+                          <th>Tanggal Surat</th>
+                          <th>Jenis Surat</th>
                           <th>Pengirim</th>
                           <th>Judul</th>
-                          <th>Isi Pesan</th>
                         </tr>
                       </thead>
                       <?php
@@ -35,13 +36,12 @@ if (empty($_SESSION['username'])) {
                        ?>
                       <tbody>
                         <tr>
-                          <td>
-                            <a href="view.php?lihatnr=<?php echo $r['0']; ?>" name><span class="fa fa-envelope"></span></a>
-                          </td>
-                          <td><?php echo $r['0']; ?></td>
                           <td><?php echo $r['1']; ?></td>
+                          <td><?php echo $r['2']; ?></td>
                           <td><?php echo $r['3']; ?></td>
                           <td><?php echo $r['4']; ?></td>
+                          <td><?php echo $r['5']; ?></td>
+                          <td><?php echo $r['7']; ?></td>
                         </tr>
                       </tbody>
                       <?php

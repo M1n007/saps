@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 26, 2018 at 02:50 
+-- Generation Time: Jan 27, 2018 at 03:40 
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `pesan` (
   `isi` varchar(250) NOT NULL,
   `status` enum('1','0') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `pesan`
@@ -78,7 +78,8 @@ INSERT INTO `pesan` (`id`, `dari`, `untuk`, `judul`, `isi`, `status`) VALUES
 (14, 'user', 'admin', 'ini judul', 'ini isi', '1'),
 (15, 'alip', 'admin', 'ini judul pesan dari alip', 'ini isi pesan dari alip', '1'),
 (16, 'akmal', 'admin', 'ini judul pesan dari akmal', 'ini isi pesan dari akmal', '1'),
-(17, 'admin', 'akmal', 'surat untuk akmal', 'isi surat untuk akmal', '1');
+(17, 'admin', 'akmal', 'surat untuk akmal', 'isi surat untuk akmal', '1'),
+(18, 'admin', 'akmal', 'waw', 'xxx', '1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -21,11 +21,12 @@ if (empty($_SESSION['username'])) {
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>Id</th>
+                          <th>Kode</th>
+                          <th>No Surat</th>
+                          <th>Tanggal Surat</th>
+                          <th>Jenis Surat</th>
                           <th>Penerima</th>
-                          <th>Subject</th>
-                          <th>Isi</th>
-                          <th>Status</th>
+                          <th>Judul</th>
                         </tr>
                       </thead>
                       <?php
@@ -35,13 +36,12 @@ if (empty($_SESSION['username'])) {
                        ?>
                       <tbody>
                         <tr>
-                          <td><?php echo $r['0']; ?></td>
+                          <td><?php echo $r['1']; ?></td>
                           <td><?php echo $r['2']; ?></td>
                           <td><?php echo $r['3']; ?></td>
                           <td><?php echo $r['4']; ?></td>
-                          <td>
-                            <span class="fa fa-check" style="color:green;"></span>
-                          </td>
+                          <td><?php echo $r['6']; ?></td>
+                          <td><?php echo $r['7']; ?></td>
                         </tr>
                       </tbody>
                       <?php

@@ -5,7 +5,14 @@ if (empty($_SESSION['username'])) {
 }
 ?>
 <?php require_once('../tpl/header.php'); ?>
+<?php
+  if (isset($_GET['delete'])) {
+    $idhps = $_GET['delete'];
+    $queryhps = mysqli_query($konek, "delete * from pegawa where no_peg='$idhps'");
+    $hps = 
+  }
 
+ ?>
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <aside class="container-fluid">
         <!-- Main content -->

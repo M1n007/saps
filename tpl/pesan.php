@@ -1,11 +1,15 @@
 <?php
   if (isset($_POST['kirim'])) {
+    $kode_surat= $_POST['kdsur'];
+    $no_surat = $_POST['nosur'];
+    $tanggal = $_POST['tglsur'];
+    $jenis = $_POST['jnssur'];
     $dari = $_POST['dari'];
     $untuk = $_POST['untuk'];
     $judul = $_POST['judul'];
     $isi = $_POST['isi'];
 
-    $kirim = "insert into pesan(dari, untuk, judul, isi) values('$dari', '$untuk', '$judul', '$isi')";
+    $kirim = "insert into pesan(kde_surat, no_surat, tgl_surat, jenis_surat, dari, untuk, judul, isi) values('$kode_surat', '$no_surat', '$tanggal', '$jenis', '$dari', '$untuk', '$judul', '$isi')";
     $kirim1 = $konek->query($kirim);
 
     if ($kirim1) {
@@ -28,10 +32,25 @@
       <div class="modal-body">
         <form method="POST" action="">
           <div class="form-group">
+            <?php
+            $query = $konek->query("SELECT max(kde_surat) as maxKode FROM pesan");
+            $data  = mysqli_fetch_array($query);
+            $noSur = $data['maxKode'];
+
+            $noUrut = (int) substr($noSur, 4, 4);
+            $noUrut++;
+
+            $char = "SURAT";
+            $noSur = $char . sprintf("%03s", $noUrut);
+             ?>
+            <label>Kode Surat :</label>
+            <input class="form-control" type="text" name="kdsur" value="<?php echo $noSur; ?>" readonly/>
             <label>No Surat :</label>
-            <input class="form-control" type="text" name="nosur" value="" readonly/>
-            <label>Tanggal Surat:</label>
-            <input class="form-control" type="text" name="tglsurat" value="" readonly/>
+            <input class="form-control" type="text" name="nosur" value=""/>
+            <label>Tanggal & waktu Surat:</label>
+            <input class="form-control" type="text" name="tglsur" value="<?php echo date("Y-m-d H:i:s"); ?>" readonly/>
+            <label>Jenis Surat:</label>
+            <input class="form-control" type="text" name="jnssur" value=""/>
             <label>From :</label>
             <input class="form-control" type="text" name="dari" value="<?php echo $_SESSION['username']; ?>" readonly/>
             <label>To :</label>
@@ -39,7 +58,7 @@
             <label>Subject :</label>
             <input class="form-control" type="text" name="judul" placeholder="masukan subject"/>
             <label>Isi :</label>
-            <input class="form-control" type="text" name="isi" placeholder="masukan isi surat"/>
+            <textarea class="form-control" type="text" name="isi" placeholder="masukan isi surat"></textarea>
           </div>
       </div>
       <div class="modal-footer">
